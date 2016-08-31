@@ -1,0 +1,46 @@
+<div class='row text-center'>
+    <h1><%= config.author %></h1>
+    <p><%= config.subtitle %></p>
+
+</div>
+<div class='row'>
+    <ul>
+    <% page.posts.each(function(post){ %>
+        <li>
+            <h3>
+                <a href="<%- url_for(post.path) %>">
+                    <%= post.title %>
+                </a>
+            </h3>
+            <div class='text-muted'>
+                <%= date(post.date, config.date_format) %> 
+            </div>
+
+            <% if(post.excerpt) { %>
+                <p>
+                    <%- post.excerpt %>
+                </p>
+            <% } %>
+        </li>
+    <% }) %>
+    </ul>
+</div>
+<section class="ss-style-doublediagonal">
+    <% page.posts.each(function(post){ %>
+        <div class='row blog-post'>
+            <h1>
+                <a href="<%- url_for(post.path) %>">
+                    <%= post.title %>
+                </a>
+            </h1>
+            <%= date(post.date, config.date_format) %> 
+            
+            <% if(post.excerpt) { %>
+                <p>
+                    <%- post.excerpt %>
+                </p>
+            <% } %>
+            <hr />
+        </div>
+    <% }) %>
+</section>
